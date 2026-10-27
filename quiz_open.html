@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>نشاط الفصل</title>
+<style>
+html,body{margin:0;height:100%;background:#fff;overflow:hidden}
+iframe{position:fixed;inset:0;width:100%;height:100%;border:0}
+p{font:16px Tahoma,Arial;text-align:center;margin-top:40vh;color:#555}
+</style>
+</head>
+<body>
+<script>
+/* يفتح اختبار Apps Script داخل هذه الصفحة حتى لا تظهر رسالة جوجل أعلى الشاشة */
+(function(){
+  var q=new URLSearchParams(location.search),s=q.get('s')||'',a=q.get('a')||'';
+  if(!/^[\w-]{20,}$/.test(s)||!/^[\w-]*$/.test(a)){document.body.innerHTML='<p>الرابط غير صحيح</p>';return}
+  var f=document.createElement('iframe');
+  f.src='https://script.google.com/macros/s/'+s+'/exec?a='+encodeURIComponent(a);
+  f.allow='clipboard-write';
+  document.body.appendChild(f);
+  f.addEventListener('load',function(){try{f.focus()}catch(e){}});
+})();
+</script>
+</body>
+</html>
